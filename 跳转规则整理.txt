@@ -1,0 +1,33 @@
+mvc-action-command
+action继承：BaseMVCActionCommand
+继承方法：doProcessAction(ActionRequest actionRequest, ActionResponse actionResponse)
+jsp页面：<portlet:actionURL name="/blogs/edit_entry" var="editEntryURL" />
+url:https://dev.liferay.com/zh/develop/tutorials/-/knowledge_base/7-0/mvc-action-command
+
+
+
+mvc-render-command
+action实现：MVCRenderCommand接口
+实现方法：public String render(RenderRequest renderRequest, RenderResponse renderResponse)
+jsp页面：
+	<portlet:renderURL var="editEntryURL">
+	    <portlet:param name="mvcRenderCommandName" value="/hello/edit_entry" />
+	    <portlet:param name="actionURL" value="/hello/edit_entry.JSP" />
+
+	    <portlet:param name="userName" value="<%= userName %>" />
+	    <portlet:param name="password" value="<%= String.valueOf(entry.getEntryId()) %>" />
+	</portlet:renderURL>
+url:https://dev.liferay.com/zh/develop/tutorials/-/knowledge_base/7-0/mvc-render-command
+
+
+
+mvc-resource-command
+jsp页面：<portlet:resourceURL id="/login/captcha" var="captchaURL" />
+action实现：MVCResourceCommand
+实现方法：public boolean serveResource(ResourceRequest resourceRequest, ResourceResponse resourceResponse)
+url:https://dev.liferay.com/zh/develop/tutorials/-/knowledge_base/7-0/mvc-resource-command
+
+
+MVCActionCommand：使用-ActionCommand类来每个portlet操作，由操作URL调用的。
+MVCRenderCommand：使用-RenderCommand班举行render一个分派到相应的JSP方法，通过响应呈现的URL。
+MVCResourceCommand：使用-ResourceCommand类执行的资源服务于你的MVC portlet中，通过响应资源URL。
